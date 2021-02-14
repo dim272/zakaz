@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Только сейчас!</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  </head>
+
+  <body>
+
+    <section class="block">
+
+      <div class="block__content">
+
+        <h2 class="block__title">Специальное предложение!</h2>
+        <h2 class="block__title block__title--red">Специальная цена</h2>
+        <h2 class="block__title block__title--red block__title--bold">149<span class="rubl">₽</span>*</h2>
+
+      </div>
+
+      <form id="form" class="block__form">
+
+        <div class="block__select">
+          <select size="1" name="country">
+            <option selected value="ru">Россия</option>
+            <option value="by">Беларусь</option>
+            <option value="uk">Украина</option>
+            <option value="kz">Казахстан</option>
+          </select>
+        </div>
+
+        <input type="text" class="block__input" name="name" placeholder="Имя" maxlength="60">
+        <input type="tel" class="block__input" name="tel" placeholder="Телефон" maxlength="20">
+
+        <button id="button" class="block__button">Заказать</button>
+       </form>
+      </div>
+
+      <p class="block__text">* при заказе набора</p>
+
+    </section>
+
+    <script>
+      $("#button").click(function(event) {
+        event.preventDefault();
+        let data = $("#form").serialize();
+        $.ajax({
+              url: "/form.php",
+              type: "post",
+              data: data
+          });
+      });
+    </script>
+
+
+  </body>
+
+
+</html>
